@@ -1,0 +1,274 @@
+/* Перенос оформления resources/styles/style.css из cepheids-postgres-orm. */
+:root {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color-scheme: dark;
+}
+body {
+  margin: 0;
+  background: #101010;
+}
+.cepheids-app {
+  --cepheid-bg: #262626;
+  --cepheid-text: #f2f2f2;
+  --cepheid-accent: #da704d;
+  --cepheid-card: #515151;
+  --cepheid-input: #3c3c3c;
+  position: relative;
+  width: min(100vw, calc(100dvh * 390 / 844));
+  height: 100dvh;
+  margin: auto;
+  overflow: hidden;
+  background: var(--cepheid-bg);
+  color: var(--cepheid-text);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+.cepheids-app * {
+  box-sizing: border-box;
+}
+.cepheids-app h1 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.cepheid-page {
+  position: absolute;
+  inset: 0 0 calc(64px + env(safe-area-inset-bottom));
+  overflow-y: auto;
+  padding: 16px;
+  scrollbar-width: thin;
+}
+.cepheid-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.cepheid-filter fieldset {
+  min-width: 0;
+  margin: 0 0 6px;
+}
+.cepheid-filter legend {
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  float: none;
+}
+.cepheid-filter output {
+  color: var(--cepheid-accent);
+  font-family: monospace;
+  font-weight: 700;
+}
+.cepheid-filter .form-range {
+  display: block;
+  height: 20px;
+  margin-bottom: 5px;
+}
+.cepheid-filter .form-range::-webkit-slider-runnable-track {
+  background: var(--cepheid-input);
+  height: 6px;
+}
+.cepheid-filter .form-range::-moz-range-track {
+  background: var(--cepheid-input);
+  height: 6px;
+}
+.cepheid-filter .form-range::-webkit-slider-thumb {
+  background: var(--cepheid-accent);
+}
+.cepheid-filter .form-range::-moz-range-thumb {
+  background: var(--cepheid-accent);
+}
+.cepheids-app .cepheid-find {
+  background: var(--cepheid-accent);
+  color: white;
+  border: 0;
+  border-radius: 2px;
+  padding: 12px;
+  font-size: 13px;
+  font-weight: 700;
+  width: 100%;
+}
+.cepheids-app .cepheid-find:hover {
+  background: #c05c3b;
+}
+.cepheid-filter .alert {
+  font-size: 12px;
+  margin: 0;
+  padding: 10px;
+}
+.cepheid-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.cepheids-app .cepheid-card {
+  border: 0;
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--cepheid-card);
+  color: var(--cepheid-text);
+  text-decoration: none;
+}
+.cepheid-card:hover {
+  outline: 1px solid var(--cepheid-accent);
+}
+.cepheid-card .cepheid-image,
+.cepheid-card .cepheid-media-unavailable {
+  width: 100%;
+  height: 110px;
+  object-fit: cover;
+  display: block;
+}
+.cepheid-card .card-body {
+  padding: 8px;
+}
+.cepheid-card .card-title {
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.cepheid-card p {
+  font-size: 11px;
+  margin: 0 0 4px;
+}
+.cepheid-likes {
+  font-size: 12px;
+  color: var(--cepheid-accent);
+}
+.cepheids-app .cepheid-tabbar {
+  position: absolute;
+  inset: auto 0 0;
+  min-height: 64px;
+  padding: 0 0 env(safe-area-inset-bottom);
+  background: var(--cepheid-bg);
+  border-top: 1px solid var(--cepheid-accent);
+  z-index: 5;
+}
+.cepheid-tabbar .nav,
+.cepheid-tabbar .navbar-nav {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.cepheid-tabbar .nav-link {
+  height: 63px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--cepheid-text);
+  font-size: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 0;
+}
+.cepheid-tabbar .nav-link span {
+  font-size: 20px;
+  line-height: 22px;
+}
+.cepheid-tabbar .nav-link.active {
+  color: var(--cepheid-accent);
+}
+.cepheid-tabbar .nav-link:disabled {
+  color: #858585;
+  cursor: not-allowed;
+}
+.cepheid-feed {
+  position: absolute;
+  inset: 0 0 calc(64px + env(safe-area-inset-bottom));
+}
+.cepheid-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #191919;
+}
+.cepheid-feed-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 35%, rgba(0, 0, 0, 0.8));
+  pointer-events: none;
+}
+.cepheid-feed-info {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  right: 76px;
+  max-height: 60%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+.cepheid-feed-info h1 {
+  margin: 0 0 6px;
+}
+.cepheid-feed-info p {
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: pre-line;
+  margin: 0;
+}
+.cepheid-feed-info .btn-link {
+  padding: 4px 0;
+  color: var(--cepheid-accent);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.cepheid-rail {
+  position: absolute;
+  right: 12px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+.cepheid-rail > div,
+.cepheid-rail > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: var(--cepheid-text);
+  text-decoration: none;
+  font-size: 12px;
+}
+.cepheid-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--cepheid-card);
+  color: var(--cepheid-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+.cepheid-circle.cepheid-accent {
+  background: var(--cepheid-accent);
+  color: white;
+}
+.cepheid-media-unavailable {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cepheid-input);
+  color: var(--cepheid-text);
+  font-size: 12px;
+  padding: 12px;
+}
+.cepheid-feed > .cepheid-media-unavailable {
+  position: absolute;
+  inset: 0;
+}
+.cepheids-app a:focus-visible,
+.cepheids-app button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -2px;
+}
+.cepheid-page > a {
+  color: var(--cepheid-accent);
+}
