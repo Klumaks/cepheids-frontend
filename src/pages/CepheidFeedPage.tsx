@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import { CEPHEID_CLASSES } from "../data/cepheidClasses";
 import type { SpectralClass } from "../types/spectralClass";
 import { nextCepheidClass } from "../lib/cepheidCalibration";
+import { previewCepheidDescription } from "../lib/cepheidDescription";
 import { CepheidMedia } from "../components/CepheidMedia";
 export function CepheidFeedPage({ classes }: { classes: SpectralClass[] }) {
   const { id } = useParams();
@@ -37,7 +38,9 @@ function CepheidFeedCard({
   nextClass: SpectralClass;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const longDescription = spectralClass.description.length > 150;
+  const { preview, isLong: longDescription } = previewCepheidDescription(
+    spectralClass.description,
+  );
   return (
     <main className="cepheid-feed">
       <CepheidMedia
@@ -78,7 +81,7 @@ function CepheidFeedCard({
         <p>
           {expanded || !longDescription
             ? spectralClass.description
-            : `${spectralClass.description.slice(0, 150)}…`}
+            : `${preview}…`}
         </p>
         {longDescription && (
           <Button
